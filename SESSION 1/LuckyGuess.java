@@ -1,11 +1,9 @@
 import java.util.Scanner;
-
 public class LuckyGuess {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a number (1-5): ");
         int number = scanner.nextInt();
-        
         switch (number) {
             case 1:
                 System.out.println("You guessed number 1. Lucky guess!");
