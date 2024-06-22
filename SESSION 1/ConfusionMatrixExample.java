@@ -2,29 +2,18 @@ import java.util.Arrays;
 
 public class ConfusionMatrixExample {
     public static void main(String[] args) {
-        // Example predicted and actual classes (binary classification)
         int[] predicted = {1, 0, 1, 1, 0, 1, 0, 1, 1, 0};
         int[] actual =    {1, 0, 1, 0, 1, 0, 1, 1, 0, 1};
-
-        // Compute confusion matrix
         int[][] confusionMatrix = computeConfusionMatrix(predicted, actual);
-        
-        // Print confusion matrix
         System.out.println("Confusion Matrix:");
         printMatrix(confusionMatrix);
-
-        // Calculate TP, TN, FP, FN
         int tp = confusionMatrix[1][1];
         int tn = confusionMatrix[0][0];
         int fp = confusionMatrix[0][1];
         int fn = confusionMatrix[1][0];
-
-        // Calculate precision, recall, and F1 score
         double precision = calculatePrecision(tp, fp);
         double recall = calculateRecall(tp, fn);
         double f1Score = calculateF1Score(precision, recall);
-
-        // Print metrics
         System.out.println("\nMetrics:");
         System.out.println("True Positives (TP): " + tp);
         System.out.println("True Negatives (TN): " + tn);
@@ -50,11 +39,8 @@ public class ConfusionMatrixExample {
                 matrix[1][0]++; // False Negative
             }
         }
-
         return matrix;
     }
-
-    // Method to calculate precision
     public static double calculatePrecision(int tp, int fp) {
         if (tp + fp == 0) {
             return 0.0;
@@ -69,16 +55,12 @@ public class ConfusionMatrixExample {
         }
         return (double) tp / (tp + fn);
     }
-
-    // Method to calculate F1 score
     public static double calculateF1Score(double precision, double recall) {
         if (precision + recall == 0) {
             return 0.0;
         }
         return 2 * (precision * recall) / (precision + recall);
     }
-
-    // Method to print a matrix
     public static void printMatrix(int[][] matrix) {
         for (int[] row : matrix) {
             System.out.println(Arrays.toString(row));
