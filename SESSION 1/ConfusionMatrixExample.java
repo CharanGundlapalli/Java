@@ -47,8 +47,6 @@ public class ConfusionMatrixExample {
         }
         return (double) tp / (tp + fp);
     }
-
-    // Method to calculate recall
     public static double calculateRecall(int tp, int fn) {
         if (tp + fn == 0) {
             return 0.0;
